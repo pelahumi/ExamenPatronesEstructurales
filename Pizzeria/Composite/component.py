@@ -16,7 +16,7 @@ class Component(ABC):
     def parent(self, parent: Component):
         self._parent = parent
 
-    def add(self, component: Component) -> None:
+    def añadir_componente(self, component: Component) -> None:
         pass
 
     def is_composite(self) -> bool:

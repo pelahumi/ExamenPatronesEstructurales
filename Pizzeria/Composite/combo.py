@@ -1,4 +1,4 @@
-from component import Component
+from Composite.component import Component
 from typing import List
 
 #Creamos la clase combo
@@ -7,7 +7,7 @@ class Combo(Component):
     def __init__(self) -> None:
         self._children: List[Component] = []
 
-    def add(self, component: Component) -> None:
+    def añadir_componente(self, component: Component) -> None:
         self._children.append(component)
         component.parent = self
 
@@ -15,7 +15,7 @@ class Combo(Component):
         return True
     
     def operation(self) -> str:
-        results = []
+        precio = 0
         for child in self._children:
-            results.append(child.operation())
-        return f"Combo ({'+'.join(results)})"
+            precio += child.precio
+        return f"El precio del combo es: {precio} euros. Y contiene: {', '.join([child.operation() for child in self._children])}"

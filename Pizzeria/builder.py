@@ -11,6 +11,8 @@ from interface.presentacion import *
 from interface.maridajes import *
 from interface.extras import *
 
+from Composite.Leafs.leafs import Leaf
+
 
 
 class Builder(ABC):
@@ -93,7 +95,7 @@ class PizzaBuilder(Builder):
 
 
 
-class Pizza():
+class Pizza(Leaf):
     """
     Es el producto final que se obtiene de la construcción. 
     Contiene una lista de partes que se construyeron y ensamblaron.
@@ -101,12 +103,16 @@ class Pizza():
 
     def __init__(self) -> None:
         self.parts = []
+        self.precio = 15
 
     def add(self, part: Any) -> None:
         """
         Añadir un nuevo ingrediente a la pizza.
         """
         self.parts.append(part)
+
+    def operation(self):
+        return "Pizza"
 
     def list_parts(self) -> None:
         print(f"Ingredientes: {', '.join(self.parts)}", end="")
