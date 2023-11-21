@@ -1,6 +1,6 @@
 from Composite.combo import Combo
 from Composite.Leafs.bebidas import *
-from Composite.Leafs.pizzas import Pizzas
+from Composite.Leafs.entrantes import *
 from Composite.Leafs.postres import *
 from builder import Builder, PizzaBuilder
 
@@ -27,7 +27,20 @@ class Director():
         menu_simple.añadir_componente(Refresco(3.5))
         menu_simple.añadir_componente(TartaQueso(5))
 
-        print(f"El precio del menú simple es: {menu_simple.operation()}")
+        print(f"{menu_simple.operation()}")
+
+    def menu_pareja(self) -> None:
+
+        menu_pareja = Combo()
+
+        menu_pareja.añadir_componente(self.builder.pizza)
+        menu_pareja.añadir_componente(self.builder.pizza)
+        menu_pareja.añadir_componente(Cerveza(3.5))
+        menu_pareja.añadir_componente(Agua(3.5))
+        menu_pareja.añadir_componente(TartaQueso(5))
+        menu_pareja.añadir_componente(Flan(5))
+
+        print(f"{menu_pareja.operation()}")
 
 
 director = Director()
@@ -35,6 +48,7 @@ builder = PizzaBuilder()
 director.builder = builder
 
 director.menu_simple()
+director.menu_pareja()
 
 
 
