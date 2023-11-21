@@ -5,7 +5,7 @@ from Composite.Leafs.postres import *
 from builder import Builder, PizzaBuilder
 
 #Clase director
-class Director():
+class DirectorMenus():
 
     def __init__(self) -> None:
         self._builder = None
@@ -43,7 +43,7 @@ class Director():
         print(f"{menu_pareja.operation()}")
 
 
-director = Director()
+director = DirectorMenus()
 builder = PizzaBuilder()
 director.builder = builder
 

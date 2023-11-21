@@ -30,4 +30,20 @@ def validator(seleccion):
         return False
     
 
+def guardar_combo_en_csv(precio, elementos):
+
+    """
+    Función que guarda las pizzas y sus ingredientes en un fichero csv -> pizzasDB.csv
+    """
+
+    # Nombre del archivo CSV en el que se guardarán las pizzas
+    archivo_csv = 'Pizzeria/DataBase/menusDB.csv'
+
+    # Abre el archivo en modo de escritura
+    with open(archivo_csv, mode='a', newline='') as file:
+        writer = csv.writer(file, delimiter=';')
+        
+        # Escribe los detalles de la pizza en el archivo
+        writer.writerow([precio, elementos])
+
         
