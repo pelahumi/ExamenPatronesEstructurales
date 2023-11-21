@@ -1,5 +1,7 @@
 import sqlite3
 
+#Creamos la base de datos que contendrá los menús y sus precios
+
 conexion = sqlite3.connect("Pizzeria/DataBase/menus.db")
 
 cursor = conexion.cursor()

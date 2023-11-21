@@ -14,8 +14,11 @@ class Combo(Component):
     def is_composite(self) -> bool:
         return True
     
-    def operation(self) -> str:
+    def elementos(self) -> str:
+        return ', '.join([child.operation() for child in self._children])
+    
+    def operation(self) -> int:
         precio = 0
         for child in self._children:
             precio += child.precio
-        return f"El precio del combo es: {precio} euros. Y contiene: {', '.join([child.operation() for child in self._children])}"
+        return precio
