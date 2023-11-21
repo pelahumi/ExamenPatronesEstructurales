@@ -3,7 +3,7 @@ from Composite.Leafs.bebidas import *
 from Composite.Leafs.entrantes import *
 from Composite.Leafs.postres import *
 from builder import Builder, PizzaBuilder
-import sqlite3
+from auxiliar import guardar_combo
 
 #Clase director
 class DirectorMenus():
@@ -31,13 +31,7 @@ class DirectorMenus():
         precio = menu_simple.operation()
         elementos = menu_simple.elementos()
 
-        conexion = sqlite3.connect("Pizzeria/DataBase/menus.db")
-        cursor = conexion.cursor()
-
-        cursor.execute("INSERT INTO menus (precio, elementos) VALUES (?, ?)", (precio, elementos))
-
-        conexion.commit()
-        conexion.close()
+        guardar_combo(precio, elementos)
 
     def menu_pareja(self) -> None:
 
@@ -53,13 +47,7 @@ class DirectorMenus():
         precio = menu_pareja.operation()
         elementos = menu_pareja.elementos()
 
-        conexion = sqlite3.connect("Pizzeria/DataBase/menus.db")
-        cursor = conexion.cursor()
-
-        cursor.execute("INSERT INTO menus (precio, elementos) VALUES (?, ?)", (precio, elementos))
-
-        conexion.commit()
-        conexion.close()
+        guardar_combo(precio, elementos)
 
 
 director = DirectorMenus()
