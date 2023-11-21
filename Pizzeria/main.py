@@ -1,11 +1,11 @@
 from launcher import launcher
-from GIU.pizzaGIU import pizzaApp
+from GIU.menuGIU import menuApp
 
 if __name__ == "__main__":
 
     #Ejecuta el programa por la interfaz gráfica
-    #pizzaApp()
+    menuApp()
 
     #Ejecuta el programa por la terminal
-    launcher()
+    #launcher()
     pass

@@ -5,7 +5,7 @@ from auxiliar import guardar_pizza_en_csv
 from directorMenus import DirectorMenus
 
 
-def pizzaApp():
+def menuApp():
     # Interfaz gráfica principal
     root = tk.Tk()
     root.title("Pizzeria Pelayo")
@@ -18,7 +18,7 @@ def pizzaApp():
     def seleccionar_pizza():
         eleccion = lista_pizzas.get(lista_pizzas.curselection())
         if eleccion:
-            label_estado.config(text=f"Preparando una pizza de {eleccion}...")
+            label_estado.config(text=f"Preparando un {eleccion}...")
             root.update()
             time.sleep(2)  # Simular el tiempo de preparación
             if eleccion == "Menu Simple":
@@ -27,7 +27,7 @@ def pizzaApp():
             elif eleccion == "Menu Pareja":
                 combo.menu_pareja()
 
-            label_estado.config(text=f"Lista su pizza de {eleccion}.")
+            label_estado.config(text=f"Lista su {eleccion}.")
 
     # Configuración de la lista de pizzas
     lista_pizzas = tk.Listbox(root)
