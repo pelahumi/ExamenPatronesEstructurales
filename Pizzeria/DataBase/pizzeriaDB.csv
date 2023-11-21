@@ -1,6 +1,6 @@
-Masas;Bases;Ingredientes;Coccion;Presentacion;Maridaje;Extras;Carta
-Masa Fina;Base de tomate;Queso;Horno;Caja;Vino;Bordes de queso;Jamón y queso
-Masa Gruesa;Base Vegana;Jamón;Leña;Bandeja;Cerveza;Trufa;Pepperoni
+Masas;Bases;Ingredientes;Coccion;Presentacion;Maridaje;Extras;Carta;Menus
+Masa Fina;Base de tomate;Queso;Horno;Caja;Vino;Bordes de queso;Jamón y queso;Menu simple
+Masa Gruesa;Base Vegana;Jamón;Leña;Bandeja;Cerveza;Trufa;Pepperoni;Menu pareja
 Masa Fermentada;Base especial;Pepperoni;Piedra;Troceada;Coctel;Caviar;Hawaiana
 ;;Champiñones;;;;;Vegana
 ;;Piña;;;;;Especial

@@ -66,7 +66,7 @@ director = DirectorMenus()
 builder = PizzaBuilder()
 director.builder = builder
 
-director.menu_simple()
+director.menu_pareja()
 
 
 

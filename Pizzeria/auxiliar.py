@@ -8,7 +8,7 @@ def guardar_pizza_en_csv(nombre_pizza, ingredientes):
     """
 
     # Nombre del archivo CSV en el que se guardarán las pizzas
-    archivo_csv = 'Builder/DataBase/pizzasDB.csv'
+    archivo_csv = 'Pizzeria/DataBase/pizzasDB.csv'
 
     # Abre el archivo en modo de escritura
     with open(archivo_csv, mode='a', newline='') as file:
@@ -23,7 +23,7 @@ def validator(seleccion):
     Función que valida si el elemento o pizza escogida por el usuario está en la base de datos de la pizzería -> pizzeriaDB.csv
     """
 
-    data = pd.read_csv("Builder/DataBase/pizzeriaDB.csv", sep=';')
+    data = pd.read_csv("Pizzeria/DataBase/pizzeriaDB.csv", sep=';')
     if str(seleccion) in data.values:
         return True
     else:

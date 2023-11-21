@@ -104,6 +104,7 @@ class Pizza(Leaf):
     def __init__(self) -> None:
         self.parts = []
         self.precio = 15
+        self.nombre = "Pizza"
 
     def add(self, part: Any) -> None:
         """
@@ -112,7 +113,7 @@ class Pizza(Leaf):
         self.parts.append(part)
 
     def operation(self):
-        return "Pizza"
+        return self.nombre
 
     def list_parts(self) -> None:
         print(f"Ingredientes: {', '.join(self.parts)}", end="")
