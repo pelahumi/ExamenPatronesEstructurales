@@ -1,5 +1,5 @@
 from launcher import launcher
-from pizzaGIU import pizzaApp
+from GIU.pizzaGIU import pizzaApp
 
 if __name__ == "__main__":
 
