@@ -50,11 +50,7 @@ class DirectorMenus():
         guardar_combo(precio, elementos)
 
 
-director = DirectorMenus()
-builder = PizzaBuilder()
-director.builder = builder
 
-director.menu_pareja()
 
 
 
