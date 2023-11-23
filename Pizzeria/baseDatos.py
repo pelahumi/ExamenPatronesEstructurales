@@ -9,6 +9,7 @@ cursor = conexion.cursor()
 cursor.execute(
     """CREATE TABLE IF NOT EXISTS menus (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
+        nombre TEXT NOT NULL,
         precio INTEGER NOT NULL,
         elementos TEXT NOT NULL
     )"""

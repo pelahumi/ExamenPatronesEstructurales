@@ -28,10 +28,11 @@ class DirectorMenus():
         menu_simple.añadir_componente(Refresco(3.5))
         menu_simple.añadir_componente(TartaQueso(5))
 
+        nombre = "Menú Simple"
         precio = menu_simple.operation()
         elementos = menu_simple.elementos()
 
-        guardar_combo(precio, elementos)
+        guardar_combo(nombre, precio, elementos)
 
     def menu_pareja(self) -> None:
 
@@ -44,10 +45,11 @@ class DirectorMenus():
         menu_pareja.añadir_componente(TartaQueso(5))
         menu_pareja.añadir_componente(Flan(5))
 
+        nombre = "Menú Pareja"
         precio = menu_pareja.operation()
         elementos = menu_pareja.elementos()
 
-        guardar_combo(precio, elementos)
+        guardar_combo(nombre, precio, elementos)
 
 
 

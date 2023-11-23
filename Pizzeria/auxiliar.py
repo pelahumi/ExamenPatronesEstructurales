@@ -31,7 +31,7 @@ def validator(seleccion):
         return False
     
 
-def guardar_combo(precio, elementos):
+def guardar_combo(nombre, precio, elementos):
 
     """
     Función que guarda los combos y sus elementos en la base de datos de menus -> menusDB.csv
@@ -43,7 +43,7 @@ def guardar_combo(precio, elementos):
     cursor = conexion.cursor()
 
     #Añadimos los elementos y el precion a la base de datos
-    cursor.execute("INSERT INTO menus (precio, elementos) VALUES (?, ?)", (precio, elementos))
+    cursor.execute("INSERT INTO menus (nombre, precio, elementos) VALUES (?, ?, ?)", (nombre, precio, elementos))
 
     #Guardamos los cambios y cerramos la conexion
     conexion.commit()
