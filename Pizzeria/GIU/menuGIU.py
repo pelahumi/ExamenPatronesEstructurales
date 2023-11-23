@@ -26,6 +26,12 @@ def menuApp():
         
             elif eleccion == "Menu Pareja":
                 combo.menu_pareja()
+            
+            elif eleccion == "Menu del Mar":
+                combo.menu_del_mar()
+            
+            elif eleccion == "Menu Pepperoni":
+                combo.menu_pepperoni()
 
             label_estado.config(text=f"Lista su {eleccion}.")
 
@@ -33,6 +39,8 @@ def menuApp():
     lista_pizzas = tk.Listbox(root)
     lista_pizzas.insert(1, "Menu Simple")
     lista_pizzas.insert(2, "Menu Pareja")
+    lista_pizzas.insert(3, "Menu del Mar")
+    lista_pizzas.insert(4, "Menu Pepperoni")
     lista_pizzas.pack()
 
     # Botón para seleccionar pizza de la carta
