@@ -105,6 +105,9 @@ class Pizza(Leaf):
         self.parts = []
         self.precio = 15
         self.nombre = "Pizza"
+    
+    def nombre_setter(self, nombre):
+        self.nombre = nombre
 
     def add(self, part: Any) -> None:
         """

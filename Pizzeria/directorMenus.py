@@ -24,6 +24,8 @@ class DirectorMenus():
 
         menu_simple = Combo()
 
+        print(self.builder.pizza.nombre)
+
         menu_simple.añadir_componente(self.builder.pizza)
         menu_simple.añadir_componente(Refresco(3.5))
         menu_simple.añadir_componente(TartaQueso(5))
@@ -32,7 +34,7 @@ class DirectorMenus():
         precio = menu_simple.operation()
         elementos = menu_simple.elementos()
 
-        guardar_combo(nombre, precio, elementos)
+        #guardar_combo(nombre, precio, elementos)
 
     def menu_pareja(self) -> None:
 
@@ -52,7 +54,12 @@ class DirectorMenus():
         guardar_combo(nombre, precio, elementos)
 
 
+if __name__ == "__main__":
+    director = DirectorMenus()
+    builder = PizzaBuilder()
+    director.builder = builder
 
+    director.menu_simple()
 
 
 
