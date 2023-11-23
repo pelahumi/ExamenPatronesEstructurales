@@ -1,8 +1,8 @@
 Masas;Bases;Ingredientes;Coccion;Presentacion;Maridaje;Extras;Carta;Menus
 Masa Fina;Base de tomate;Queso;Horno;Caja;Vino;Bordes de queso;Jamón y queso;Menu simple
 Masa Gruesa;Base Vegana;Jamón;Leña;Bandeja;Cerveza;Trufa;Pepperoni;Menu pareja
-Masa Fermentada;Base especial;Pepperoni;Piedra;Troceada;Coctel;Caviar;Hawaiana
-;;Champiñones;;;;;Vegana
+Masa Fermentada;Base especial;Pepperoni;Piedra;Troceada;Coctel;Caviar;Hawaiana;Menu pepperoni
+;;Champiñones;;;;;Vegana;Menu del mar
 ;;Piña;;;;;Especial
 
 

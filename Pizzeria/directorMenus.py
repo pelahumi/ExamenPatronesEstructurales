@@ -2,7 +2,7 @@ from Composite.combo import Combo
 from Composite.Leafs.bebidas import *
 from Composite.Leafs.entrantes import *
 from Composite.Leafs.postres import *
-from builder import Builder, PizzaBuilder
+from builder import Builder, PizzaBuilder, Pizza
 from auxiliar import guardar_combo
 
 #Clase director
@@ -24,7 +24,7 @@ class DirectorMenus():
 
         menu_simple = Combo()
 
-        print(self.builder.pizza.nombre)
+        print(self.builder.pizza.set_nombre("Pizza Simple"))
 
         menu_simple.añadir_componente(self.builder.pizza)
         menu_simple.añadir_componente(Refresco(3.5))
@@ -34,7 +34,41 @@ class DirectorMenus():
         precio = menu_simple.operation()
         elementos = menu_simple.elementos()
 
-        #guardar_combo(nombre, precio, elementos)
+        guardar_combo(nombre, precio, elementos)
+    
+    def menu_pepperoni(self) -> None:
+            
+        menu_pepperoni = Combo()
+    
+        pizza = self.builder.pizza
+        pizza.set_nombre("Pizza Pepperoni")
+    
+        menu_pepperoni.añadir_componente(pizza)
+        menu_pepperoni.añadir_componente(Refresco(3.5))
+        menu_pepperoni.añadir_componente(TartaQueso(5))
+    
+        nombre = "Menú Pepperoni"
+        precio = menu_pepperoni.operation()
+        elementos = menu_pepperoni.elementos()
+    
+        guardar_combo(nombre, precio, elementos)
+    
+    def menu_del_mar(self) -> None:
+        
+            menu_del_mar = Combo()
+        
+            pizza = self.builder.pizza
+            pizza.set_nombre("Pizza Hawaiana")
+        
+            menu_del_mar.añadir_componente(pizza)
+            menu_del_mar.añadir_componente(Agua(2))
+            menu_del_mar.añadir_componente(Flan(4.5))
+        
+            nombre = "Menú del Mar"
+            precio = menu_del_mar.operation()
+            elementos = menu_del_mar.elementos()
+        
+            guardar_combo(nombre, precio, elementos)
 
     def menu_pareja(self) -> None:
 
@@ -59,7 +93,7 @@ if __name__ == "__main__":
     builder = PizzaBuilder()
     director.builder = builder
 
-    director.menu_simple()
+    director.menu_pepperoni()
 
 
 

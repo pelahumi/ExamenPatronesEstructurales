@@ -70,6 +70,8 @@ def launcher():
         print("Menús:")
         print("1. Menú simple")
         print("2. Menú pareja")
+        print("3. Menú del mar")
+        print("4. Menú pepperoni")
         menu = str(input("¿Qué menú desea pedir?: "))
 
         while not validator(menu):
@@ -82,6 +84,13 @@ def launcher():
         elif menu == "2":
             combo.menu_pareja()
         
+        elif menu == "3":
+            combo.menu_del_mar()
+        
+        elif menu == "4":
+            combo.menu_pepperoni()
+        
+        print("Preparando su menú...")
         time.sleep(2)
         print("Listo su menú.")
 
