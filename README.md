@@ -1,5 +1,7 @@
 # ExamenPatronesEstructurales
 
+Link a mi repositorio de [GitHub](https://github.com/pelahumi/ExamenPatronesEstructurales)
+
 ## Índice
 
 
