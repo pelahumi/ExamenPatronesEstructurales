@@ -27,7 +27,7 @@ class Proxy(Subject):
     def check_access(self) -> bool:
         pass
         
-    def check_access(self, user) -> bool:
+    def check_user(self, user) -> bool:
         """
         Comprueba si el usuario existe en la base de datos
         """
@@ -37,6 +37,15 @@ class Proxy(Subject):
             return True
         else:
             return False
+        
+    def user_access(self, user) -> None:
+        """
+        Registra el usuario que ha realizado la consulta
+        """
+        cursor = self.conexion.cursor()
+        cursor.execute("INSERT INTO acceso (usuario) VALUES (?)", (user,))
+        self.conexion.commit()
+        self.conexion.close()
 
     def log_access(self) -> None:
         """
