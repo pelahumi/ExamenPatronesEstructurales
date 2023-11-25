@@ -17,7 +17,8 @@ class Proxy(Subject):
 
     def __init__(self, real_subject: RealSubject) -> None:
         self.real_subject = real_subject
-        self.conexion = sqlite3.connect("Samur/DataBase/acceso.db")
+        self.usersdb = sqlite3.connect("Samur/DataBase/usuarios_autorizados.db")
+        self.accessdb = sqlite3.connect("Samur/DataBase/acceso.db")
     
     def request(self) -> None:
         if self.check_access():
@@ -29,10 +30,10 @@ class Proxy(Subject):
         
     def check_user(self, user) -> bool:
         """
-        Comprueba si el usuario existe en la base de datos
+        Comprueba si el usuario existe en la base de datos de usuarios autorizados
         """
-        cursor = self.conexion.cursor()
-        cursor.execute("SELECT usuario FROM acceso WHERE usuario = ?", (user,))
+        cursor = self.usersdb.cursor()
+        cursor.execute("SELECT usuario FROM usuarios_autorizados WHERE usuario = ?", (user,))
         if cursor.fetchone():
             return True
         else:
@@ -42,21 +43,21 @@ class Proxy(Subject):
         """
         Registra el usuario que ha realizado la consulta
         """
-        cursor = self.conexion.cursor()
+        cursor = self.accessdb.cursor()
         cursor.execute("INSERT INTO acceso (usuario) VALUES (?)", (user,))
-        self.conexion.commit()
-        self.conexion.close()
+        self.accessdb.commit()
+        self.accessdb.close()
 
     def log_access(self) -> None:
         """
         Registra la hora de la consulta
         """
-        cursor = self.conexion.cursor()
+        cursor = self.accessdb.cursor()
         now = datetime.now()
 
         cursor.execute("INSERT INTO acceso (hora) VALUES (?)", (now,))
-        self.conexion.commit()
-        self.conexion.close()
+        self.accessdb.commit()
+        self.accessdb.close()
 
 def client_code(subject: Subject) -> None:
     """
