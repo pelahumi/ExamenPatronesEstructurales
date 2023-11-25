@@ -1,4 +1,6 @@
 from abc import ABC, abstractmethod
+import sqlite3
+from datetime import datetime
 
 class Subject(ABC):
 
@@ -15,18 +17,37 @@ class Proxy(Subject):
 
     def __init__(self, real_subject: RealSubject) -> None:
         self.real_subject = real_subject
+        self.conexion = sqlite3.connect("Samur/DataBase/acceso.db")
     
     def request(self) -> None:
         if self.check_access():
             self.real_subject.request()
             self.log_access()
-            
+
     def check_access(self) -> bool:
-        print("Proxy: Checking access prior to firing a real request.")
-        return True
+        pass
+        
+    def check_access(self, user) -> bool:
+        """
+        Comprueba si el usuario existe en la base de datos
+        """
+        cursor = self.conexion.cursor()
+        cursor.execute("SELECT usuario FROM acceso WHERE usuario = ?", (user,))
+        if cursor.fetchone():
+            return True
+        else:
+            return False
 
     def log_access(self) -> None:
-        print("Proxy: Logging the time of request.")
+        """
+        Registra la hora de la consulta
+        """
+        cursor = self.conexion.cursor()
+        now = datetime.now()
+
+        cursor.execute("INSERT INTO acceso (hora) VALUES (?)", (now,))
+        self.conexion.commit()
+        self.conexion.close()
 
 def client_code(subject: Subject) -> None:
     """
