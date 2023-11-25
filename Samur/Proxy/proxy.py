@@ -21,9 +21,12 @@ class Proxy(Subject):
         self.accessdb = sqlite3.connect("Samur/DataBase/acceso.db")
     
     def request(self) -> None:
-        if self.check_access():
+        if self.check_user():
+            print("Acceso permitido...")
             self.real_subject.request()
-            self.log_access()
+            self.log_user()
+            self.log_time()
+        
 
     def check_access(self) -> bool:
         pass
@@ -32,12 +35,15 @@ class Proxy(Subject):
         """
         Comprueba si el usuario existe en la base de datos de usuarios autorizados
         """
-        cursor = self.usersdb.cursor()
-        cursor.execute("SELECT usuario FROM usuarios_autorizados WHERE usuario = ?", (user,))
-        if cursor.fetchone():
-            return True
-        else:
-            return False
+        try:
+            cursor = self.usersdb.cursor()
+            cursor.execute("SELECT usuario FROM usuarios_autorizados WHERE usuario = ?", (user,))
+            if cursor.fetchone():
+                return True
+            else:
+                return False
+        finally:
+            cursor.close()
         
     def log_user(self, user) -> None:
         """
