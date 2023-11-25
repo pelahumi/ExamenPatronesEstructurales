@@ -5,7 +5,7 @@ from typing import List
 class Component(ABC):
 
     """
-    
+    Esta clase es la interfaz que define el comportamiento de los objetos del arbol
     """
 
     @property

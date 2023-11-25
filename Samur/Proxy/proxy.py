@@ -39,7 +39,7 @@ class Proxy(Subject):
         else:
             return False
         
-    def user_access(self, user) -> None:
+    def log_user(self, user) -> None:
         """
         Registra el usuario que ha realizado la consulta
         """
@@ -47,8 +47,18 @@ class Proxy(Subject):
         cursor.execute("INSERT INTO acceso (usuario) VALUES (?)", (user,))
         self.accessdb.commit()
         self.accessdb.close()
+    
+    def log_change(self) -> None:
+        """
+        Registra si el usuario realiza cambios en los archivos
+        """
+        cursor = self.accessdb.cursor()
+        cursor.execute("INSERT INTO acceso (cambio) VALUES (?)", (True,))
+        self.accessdb.commit()
+        self.accessdb.close()
 
-    def log_access(self) -> None:
+
+    def log_time(self) -> None:
         """
         Registra la hora de la consulta
         """

@@ -3,6 +3,10 @@ from typing import List
 
 class Carpeta(Component):
 
+    """
+    Esta clase representa a los objetos compuestos del arbol
+    """
+
     def __init__(self) -> None:
         self._children: List[Component] = []
 
