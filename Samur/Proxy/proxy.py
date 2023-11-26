@@ -28,9 +28,6 @@ class Proxy(Subject):
             self.log_user()
             self.log_change()
             self.log_time()
-
-    def check_access(self) -> bool:
-        pass
         
     def check_user(self) -> bool:
         """
@@ -45,7 +42,7 @@ class Proxy(Subject):
             else:
                 return False
         finally:
-            self.usersdb.coomit()
+            self.usersdb.commit()
             self.usersdb.close()
         
     def log_user(self) -> None:

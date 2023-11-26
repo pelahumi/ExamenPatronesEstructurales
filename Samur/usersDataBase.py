@@ -15,3 +15,12 @@ cursor.execute(
 
 conexion.commit()
 conexion.close()
+
+
+"""conexion = sqlite3.connect("Samur/DataBase/usuarios_autorizados.db")
+cursor = conexion.cursor()
+
+cursor.execute("DELETE FROM usuarios_autorizados")
+
+conexion.commit()
+conexion.close()"""
