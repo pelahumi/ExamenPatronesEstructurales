@@ -28,6 +28,8 @@ class Proxy(Subject):
             self.log_user()
             self.log_change()
             self.log_time()
+        else:
+            print("Acceso denegado...")
         
     def check_user(self) -> bool:
         """

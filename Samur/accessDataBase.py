@@ -9,7 +9,7 @@ cursor = conexion.cursor()
 cursor.execute(
     """CREATE TABLE IF NOT EXISTS acceso (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        usuario TEXT NOT NULL,
+        usuario TEXT,
         modificacion INTEGRER,
         hora_modificacion TEXT
     )"""
