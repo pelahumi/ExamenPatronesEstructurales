@@ -15,8 +15,9 @@ class RealSubject(Subject):
 
 class Proxy(Subject):
 
-    def __init__(self, real_subject: RealSubject) -> None:
+    def __init__(self, real_subject: RealSubject, user: str) -> None:
         self.real_subject = real_subject
+        self.user = user
         self.usersdb = sqlite3.connect("Samur/DataBase/usuarios_autorizados.db")
         self.accessdb = sqlite3.connect("Samur/DataBase/acceso.db")
     
@@ -25,19 +26,19 @@ class Proxy(Subject):
             print("Acceso permitido...")
             self.real_subject.request()
             self.log_user()
+            self.log_change()
             self.log_time()
-        
 
     def check_access(self) -> bool:
         pass
         
-    def check_user(self, user) -> bool:
+    def check_user(self) -> bool:
         """
         Comprueba si el usuario existe en la base de datos de usuarios autorizados
         """
         try:
             cursor = self.usersdb.cursor()
-            cursor.execute("SELECT usuario FROM usuarios_autorizados WHERE usuario = ?", (user,))
+            cursor.execute("SELECT usuario FROM usuarios_autorizados WHERE usuario = ?", (self.user,))
             if cursor.fetchone():
                 return True
             else:
@@ -45,12 +46,12 @@ class Proxy(Subject):
         finally:
             cursor.close()
         
-    def log_user(self, user) -> None:
+    def log_user(self) -> None:
         """
         Registra el usuario que ha realizado la consulta
         """
         cursor = self.accessdb.cursor()
-        cursor.execute("INSERT INTO acceso (usuario) VALUES (?)", (user,))
+        cursor.execute("INSERT INTO acceso (usuario) VALUES (?)", (self.user,))
         self.accessdb.commit()
         self.accessdb.close()
     
@@ -59,7 +60,7 @@ class Proxy(Subject):
         Registra si el usuario realiza cambios en los archivos
         """
         cursor = self.accessdb.cursor()
-        cursor.execute("INSERT INTO acceso (cambio) VALUES (?)", (True,))
+        cursor.execute("INSERT INTO acceso (cambio) VALUES (?)", (0,))
         self.accessdb.commit()
         self.accessdb.close()
 

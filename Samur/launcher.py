@@ -2,6 +2,7 @@ from Composite.Carpeta import Carpeta
 from Composite.Documentos import Documentos
 from Composite.Links import Links
 from Proxy.proxy import *
+from auxiliar import generar_usuarios
 
 def launcher():
     #Creamos los documentos 
@@ -22,7 +23,20 @@ def launcher():
 
     carpeta2.add(doc2)
     carpeta2.add(doc3)
+
+    #Creamos nombres de usuario aleatorios en la base de datos
+    generar_usuarios(20)
+
+    #Pedimos el usuario para iniciar sesion
+    usuario = input("Introduce tu nombre de usuario: ")
     
+    #Creamos el proxy
+    real_subject = RealSubject()
+    proxy = Proxy(real_subject, usuario)
+
+
+    
+
 
 
 
