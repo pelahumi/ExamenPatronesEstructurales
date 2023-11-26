@@ -21,6 +21,7 @@ class Proxy(Subject):
         self.usersdb = sqlite3.connect("Samur/DataBase/usuarios_autorizados.db")
         self.accessdb = sqlite3.connect("Samur/DataBase/acceso.db")
     
+    
     def request(self) -> None:
         if self.check_user():
             print("Acceso permitido...")
@@ -30,6 +31,7 @@ class Proxy(Subject):
             self.log_time()
         else:
             print("Acceso denegado...")
+
         
     def check_user(self) -> bool:
         """
@@ -46,6 +48,7 @@ class Proxy(Subject):
         finally:
             usersdb.commit()
             usersdb.close()
+
         
     def log_user(self) -> None:
         """
@@ -56,6 +59,7 @@ class Proxy(Subject):
         cursor.execute("INSERT INTO acceso (usuario) VALUES (?)", (self.user,))
         accessdb.commit()
         accessdb.close()
+
     
     def log_change(self) -> None:
         """
@@ -79,6 +83,7 @@ class Proxy(Subject):
         cursor.execute("UPDATE acceso SET hora_modificacion = ?", (now,))
         accessdb.commit()
         accessdb.close()
+
 
 def client_code(subject: Subject) -> None:
     """
