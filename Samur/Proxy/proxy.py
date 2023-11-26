@@ -11,7 +11,7 @@ class Subject(ABC):
 class RealSubject(Subject):
 
     def request(self) -> None:
-        print("RealSubject: Handling request.")
+        print("Accediendo a archivos clasificados...")
 
 class Proxy(Subject):
 

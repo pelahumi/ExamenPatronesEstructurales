@@ -7,7 +7,8 @@ class Carpeta(Component):
     Esta clase representa a los objetos compuestos del arbol
     """
 
-    def __init__(self) -> None:
+    def __init__(self, nombre: str) -> None:
+        self.nombre = nombre
         self._children: List[Component] = []
 
     def add(self, component: Component) -> None:
