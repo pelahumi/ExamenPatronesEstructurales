@@ -1,4 +1,4 @@
-from Leaf import Leaf
+from Composite.Leaf import Leaf
 
 class Links(Leaf):
 

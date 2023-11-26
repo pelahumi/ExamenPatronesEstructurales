@@ -37,6 +37,7 @@ class Proxy(Subject):
         Comprueba si el usuario existe en la base de datos de usuarios autorizados
         """
         try:
+            self.usersdb
             cursor = self.usersdb.cursor()
             cursor.execute("SELECT usuario FROM usuarios_autorizados WHERE usuario = ?", (self.user,))
             if cursor.fetchone():
@@ -44,12 +45,14 @@ class Proxy(Subject):
             else:
                 return False
         finally:
-            cursor.close()
+            self.usersdb.coomit()
+            self.usersdb.close()
         
     def log_user(self) -> None:
         """
         Registra el usuario que ha realizado la consulta
         """
+        self.accessdb
         cursor = self.accessdb.cursor()
         cursor.execute("INSERT INTO acceso (usuario) VALUES (?)", (self.user,))
         self.accessdb.commit()
@@ -59,6 +62,7 @@ class Proxy(Subject):
         """
         Registra si el usuario realiza cambios en los archivos
         """
+        self.accessdb
         cursor = self.accessdb.cursor()
         cursor.execute("INSERT INTO acceso (cambio) VALUES (?)", (0,))
         self.accessdb.commit()
@@ -69,6 +73,7 @@ class Proxy(Subject):
         """
         Registra la hora de la consulta
         """
+        self.accessdb
         cursor = self.accessdb.cursor()
         now = datetime.now()
 
