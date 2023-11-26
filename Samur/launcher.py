@@ -33,6 +33,7 @@ def launcher():
     #Creamos el proxy
     real_subject = RealSubject()
     proxy = Proxy(real_subject, usuario)
+    client_code(proxy)
 
 
     

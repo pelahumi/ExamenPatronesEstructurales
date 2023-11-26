@@ -1,4 +1,4 @@
-from Component import Component
+from component import Component
 from typing import List
 
 class Carpeta(Component):
