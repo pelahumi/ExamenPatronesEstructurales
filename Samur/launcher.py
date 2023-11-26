@@ -15,4 +15,14 @@ def launcher():
     carpeta1 = Carpeta("carpeta1")
     carpeta2 = Carpeta("carpeta2")
 
+    #Añadimos los documentos a las carpetas
+    carpeta1.add(doc1)
+    carpeta1.add(link1)
+    carpeta1.add(link2)
+
+    carpeta2.add(doc2)
+    carpeta2.add(doc3)
+    
+
+
 
