@@ -63,7 +63,7 @@ class Proxy(Subject):
         """
         accessdb = sqlite3.connect("Samur/DataBase/acceso.db")
         cursor = accessdb.cursor()
-        cursor.execute("INSERT INTO acceso (modificacion) VALUES (?)", (0,))
+        cursor.execute("UPDATE acceso SET modificacion = ?", (0,))
         accessdb.commit()
         accessdb.close()
 
@@ -76,7 +76,7 @@ class Proxy(Subject):
         cursor = accessdb.cursor()
         now = datetime.now()
 
-        cursor.execute("INSERT INTO acceso (hora_modificacion) VALUES (?)", (now,))
+        cursor.execute("UPDATE acceso SET hora_modificacion = ?", (now,))
         accessdb.commit()
         accessdb.close()
 
