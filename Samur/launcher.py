@@ -3,6 +3,7 @@ from Composite.Documentos import Documentos
 from Composite.Links import Links
 from Proxy.proxy import *
 from auxiliar import generar_usuarios
+import time
 
 def launcher():
     #Creamos los documentos 
@@ -33,7 +34,19 @@ def launcher():
     #Creamos el proxy
     real_subject = RealSubject()
     proxy = Proxy(real_subject, usuario)
-    client_code(proxy)
+    if proxy.request() == True:
+        print("Acceso permitido...")
+        time.sleep(0.5)
+        print("Accediendo a los archivos...")
+        time.sleep(2)
+        print(carpeta1.operation())
+        print("\n")
+        print(carpeta2.operation())
+    else:
+        print("Acceso denegado...")
+        time.sleep(2)
+        print("Saliendo del programa...")
+
 
 
     
