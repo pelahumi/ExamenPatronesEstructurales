@@ -22,11 +22,10 @@ class Proxy(Subject):
         self.accessdb = sqlite3.connect("Samur/DataBase/acceso.db")
     
     
-    def request(self) -> None:
+    def request(self) -> bool:
         if self.check_user():
             self.real_subject.request()
             self.log_user()
-            self.log_change()
             self.log_time()
             return True
         else:
@@ -61,13 +60,13 @@ class Proxy(Subject):
         accessdb.close()
 
     
-    def log_change(self) -> None:
+    def log_change(self, modificacion: int) -> None:
         """
         Registra si el usuario realiza cambios en los archivos
         """
         accessdb = sqlite3.connect("Samur/DataBase/acceso.db")
         cursor = accessdb.cursor()
-        cursor.execute("UPDATE acceso SET modificacion = ?", (0,))
+        cursor.execute("UPDATE acceso SET modificacion = ?", (modificacion,))
         accessdb.commit()
         accessdb.close()
 
