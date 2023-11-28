@@ -29,3 +29,23 @@ Para ver mejor la estructura del patrón composite creamos el siguiente diagrama
 
 ### Base de datos
 Para guardar toda la información de lo que vende nuestro negocio, hemos creado una base de datos pequeña (SQLite) que contiene una tabla con tres columnas: el id (indice), el precio del combo, y otra para sus elementos. Toda esta información la guardamos en la base de datos que creamos en el fichero baseDatos.py con la función ```guardar_combo()``` ubicada en el fichero auxiliar.py. Esta última función lo que hace es establecer una conexión con la base de datos y añadir a la columna correspondiente el precio y elementos del combo.
+
+
+## Samur
+
+### Patrón Composite
+Para crear los diferentes tipos y jerarquías de documentos, carpetas y links, utilizaremos el patrón Composite, que implementamos en el ejercicio anterio. Donde los elementos más sencillos(hojas) son las clases ```Documentos``` y ```Links``` y la clase ```Carpetas``` es una clase compuesta, que puede contener tanto hojas(documentos y links) como carpetas más pequeñas. 
+
+### Patrón Proxy
+Además, se nos pide que para acceder a los documentos el usuario tiene que pasar por un control de acceso. Para ello, implementamos el patrón Proxy, con el fin de que deje pasar únicamente a usuarios que estén registrados en nuestra base de datos. Este patrón se compone de tres clases: la clase ```Subject``` que actúa como interface, la clase ```RealSubject``` que es la que se encarga de realizar la petición del usuario, y la clase ```Proxy```, que se conecta con dos bases de datos: una para comprobar si el usuario está registrado, y otra para registrar el usuario que accede, sus cambios y la hora de acceso. La función ```check_user()``` comprueba si el usuario que quiere acceder a los documentos y devuelve un booleano. Las funciones ```log_user()```, ```log_change()``` y ```log_time()``` se encargan de registrar usuario, si hizo cambios(0 -> no hizo cambios, 1 -> si hizo cambios) y la fecha y hora de acceso, respectivamente. Por último, el método ```request()``` determina si el usuario puede realizar la petición.
+
+### Bases de datos
+En este ejercicio tenemos dos bases de datos:
+  1) usuarios_autorizados: tiene una única columna usuarios, para llevar un registro de los usuarios que pueden tener acceso a los documentos.
+  2) acceso: tiene una columna usuario, que registra el usuario, una columna modificacion, que registra si el usuario hizo algún cambio y hora_modificacion que registra la fecha y hora.
+
+### Fichero auxiliar
+En este fichero auxiliar.py tenemos una función llamada ```generar_usuario(n)``` que se encarga de generar n usuarios aleatorios y registrarlos en la base de datos correspondiente. Para generar los nombres de usuario de una manera aleatoria, utilizamos la librería Faker.
+
+### Fichero launcher
+La función ```launcher()``` se encarga de inicializar todo el programa creando los documentos y archivos, y generando el proxy de acceso y registro.
