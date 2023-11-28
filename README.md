@@ -2,10 +2,6 @@
 
 Link a mi repositorio de [GitHub](https://github.com/pelahumi/ExamenPatronesEstructurales)
 
-## Índice
-
-
-
 ## Pizzería
 
 ### Implementación del patrón
@@ -23,7 +19,7 @@ La clase ```DirectorMenus``` se encarga de crear los menús, para seguir utiliza
 Para ver mejor la estructura del patrón composite creamos el siguiente diagrama UML:
 
 <p align="center">
-  <img src="https://github.com/pelahumi/ExamenPatronesEstructurales/assets/91721764/099fdb2a-f06e-4df3-94fd-ac97e7eea46b" alt="CompositeUML">
+  <img src="https://github.com/pelahumi/ExamenPatronesEstructurales/blob/main/Pizzeria/Composite/UMLs/CompositeCompletoUML.svg" alt="CompositeUML">
 </p>
 
 
