@@ -88,12 +88,7 @@ class DirectorMenus():
         guardar_combo(nombre, precio, elementos)
 
 
-if __name__ == "__main__":
-    director = DirectorMenus()
-    builder = PizzaBuilder()
-    director.builder = builder
 
-    director.menu_pepperoni()
 
 
 
