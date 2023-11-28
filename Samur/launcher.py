@@ -34,9 +34,7 @@ def launcher():
     #Creamos el proxy
     real_subject = RealSubject()
     proxy = Proxy(real_subject, usuario)
-    proxy.request()
     if proxy.request() == True:
-        print("Acceso permitido...")
         time.sleep(0.5)
         print("Accediendo a los archivos...")
         time.sleep(2)
@@ -44,18 +42,9 @@ def launcher():
         print("Quieres eliminar algun archivo? (s/n)")
         respuesta = input()
         if respuesta == "s":
-            print("Que archivo quieres eliminar?")
-            archivo = input()
-            print("En que carpeta esta?")
-            carpeta = input()
-            if carpeta == "carpeta1":
-                carpeta1.remove(carpeta1._children[archivo])
-                proxy.log_change(1)
-            elif carpeta == "carpeta2":
-                carpeta2.remove(carpeta2._children[archivo])
-                proxy.log_change(1)
-            else:
-                print("No existe esa carpeta")
+            carpeta1.remove(link1)
+            print("Archivo eliminado")
+            proxy.log_change(1)
         else:
             print("No se ha eliminado ningun archivo")
             proxy.log_change(0)
