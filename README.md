@@ -36,6 +36,10 @@ Para guardar toda la información de lo que vende nuestro negocio, hemos creado 
 ### Patrón Composite
 Para crear los diferentes tipos y jerarquías de documentos, carpetas y links, utilizaremos el patrón Composite, que implementamos en el ejercicio anterio. Donde los elementos más sencillos(hojas) son las clases ```Documentos``` y ```Links``` y la clase ```Carpetas``` es una clase compuesta, que puede contener tanto hojas(documentos y links) como carpetas más pequeñas. 
 
+<p align="center">
+  <img src="https://github.com/pelahumi/ExamenPatronesEstructurales/blob/main/Samur/UMLs/CompositeUML.svg" alt="CompositeUML">
+</p>
+
 ### Patrón Proxy
 Además, se nos pide que para acceder a los documentos el usuario tiene que pasar por un control de acceso. Para ello, implementamos el patrón Proxy, con el fin de que deje pasar únicamente a usuarios que estén registrados en nuestra base de datos. Este patrón se compone de tres clases: la clase ```Subject``` que actúa como interface, la clase ```RealSubject``` que es la que se encarga de realizar la petición del usuario, y la clase ```Proxy```, que se conecta con dos bases de datos: una para comprobar si el usuario está registrado, y otra para registrar el usuario que accede, sus cambios y la hora de acceso. La función ```check_user()``` comprueba si el usuario que quiere acceder a los documentos y devuelve un booleano. Las funciones ```log_user()```, ```log_change()``` y ```log_time()``` se encargan de registrar usuario, si hizo cambios(0 -> no hizo cambios, 1 -> si hizo cambios) y la fecha y hora de acceso, respectivamente. Por último, el método ```request()``` determina si el usuario puede realizar la petición.
 
