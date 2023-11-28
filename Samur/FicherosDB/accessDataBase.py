@@ -17,3 +17,11 @@ cursor.execute(
 
 conexion.commit()
 conexion.close()
+
+"""conexion = sqlite3.connect("Samur/DataBase/acceso.db")
+cursor = conexion.cursor()
+
+cursor.execute("DELETE FROM acceso")
+
+conexion.commit()
+conexion.close()"""
